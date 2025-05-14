@@ -46,17 +46,27 @@ public:
             cout << "Invalid Account Type. Try Again." << endl;
         }
 
-        if (account_Type == 1)
+        switch (account_Type)
         {
-            cout << "---- Saving Account Is Successfully Created. ----" << endl;
-        }
-        else if (account_Type == 2)
-        {
-            cout << "---- Current Account is Successfully Created. ----" << endl;
-        }
-        else if (account_Type == 3)
-        {
-            cout << "---- Fixed Deposit Account is Successfully Created. ----" << endl;
+            case 1:
+                cout << "---- Saving Account Is Successfully Created. ----" << endl;        
+                break;
+            
+            case 2:
+                cout << "---- Current Account is Successfully Created. ----" << endl;
+                break;
+            case 3:
+                cout << "---- Fixed Deposit Account is Successfully Created. ----" << endl;
+                break;
+            
+            default:
+                while (accountBalance <= 0)
+                {
+                    cout << "Account Must be Between (1-3) : "<< endl;
+                    cout << "Please Enter A Valid Account Type :- ";
+                    cin >> this->account_Type;
+                }
+                break;
         }
     }
 
@@ -183,7 +193,7 @@ int main()
                     obj.withdraw();
                     break;
                 case 3:
-                    Myobj_2.accountBalance = obj.getBalance();  // Update balance in derived class
+                    Myobj_2.accountBalance = obj.getBalance();  
                     Myobj_2.calculateIntrest();
                     break;
                 case 4:
